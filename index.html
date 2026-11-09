@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Physics in Collisions 2027</title>
+<meta name="description" content="46th International Symposium on Physics in Collisions (PIC 2027), Melbourne, Australia. Full website coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Holding page: one dark detector-hall screen, same tokens and type as the full PIC 2027 site. */
+:root {
+  --night: #050b17;
+  --ink: #e7eef7;
+  --muted: #93a7c2;
+  --line: rgba(147, 167, 194, 0.22);
+  --glow: #66ccff;
+  --signal: #f0b54a;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--night) url("collision.jpg") 64% 50% / cover no-repeat;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 11, 23, 0.94) 0%, rgba(5, 11, 23, 0.72) 45%, rgba(5, 11, 23, 0.1) 80%);
+  pointer-events: none;
+}
+.wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+header .wrap { display: flex; align-items: center; gap: 12px; padding-block: max(20px, env(safe-area-inset-top, 0px)) 20px; }
+.brand-logo { width: 46px; height: 40px; flex: none; }
+.brand-text { display: grid; line-height: 1.05; }
+.brand-text b { font-family: var(--display); font-stretch: 118%; font-weight: 700; font-size: 17px; letter-spacing: 0.02em; }
+.brand-text span { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+main { flex: 1; display: flex; align-items: center; }
+main .wrap { padding-block: clamp(48px, 9vh, 120px); }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); margin: 0; }
+.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+h1 { font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: clamp(42px, 7.4vw, 92px); letter-spacing: -0.015em; line-height: 0.98; margin: 18px 0 0; max-width: 11ch; text-wrap: balance; }
+h1 em { font-style: normal; display: block; font-stretch: 75%; font-weight: 500; font-size: 0.5em; letter-spacing: 0.01em; color: var(--muted); margin-top: 10px; }
+.meta { margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--mono); font-size: 14.5px; }
+.meta span + span::before { content: "·"; margin-right: 14px; color: var(--muted); }
+.status { margin-top: 40px; max-width: 520px; border-top: 1px solid var(--line); padding-top: 22px; display: grid; gap: 10px; }
+.pill { justify-self: start; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); border: 1px dashed currentColor; border-radius: 3px; padding: 2px 8px; }
+.status p { margin: 0; color: var(--muted); }
+.status p strong { color: var(--ink); font-weight: 500; }
+
+footer { position: relative; border-top: 1px solid var(--line); background: rgba(5, 11, 23, 0.6); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px max(18px, env(safe-area-inset-bottom, 0px)); font-size: 13px; color: var(--muted); }
+footer .mono { font-family: var(--mono); }
+
+@media (max-width: 640px) {
+  body { background-position: 72% 30%; }
+  .meta { flex-direction: column; gap: 2px; }
+  .meta span + span::before { content: none; }
+  body::before { background: linear-gradient(180deg, rgba(5, 11, 23, 0.6) 0%, rgba(5, 11, 23, 0.9) 55%); }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="aus" viewBox="0 0 500 430">
+      <path fill="none" stroke-linejoin="round" stroke-linecap="round" d="M25,153.6 L21.4,157.2 L20.2,180 L17.9,198 L23.8,210 L31,218.4 L31,235.2 L26.2,246 L34.5,258 L35.7,270 L44,288 L38.1,298.8 L36.9,303.6 L56,312 L76.2,313.2 L94,301.2 L116.7,298.8 L136.9,298.8 L159.5,298.8 L178.6,297.6 L202.4,297.6 L226.2,270 L232.1,270 L238.1,276 L256,276 L261.9,282 L272.6,319.2 L282.1,312 L292.9,314.4 L302.4,319.2 L310.7,321.6 L315.5,312 L320.2,309.6 L321.4,314.4 L331,331.2 L344,348 L352.4,352.8 L361.9,352.8 L375,356.4 L389.3,351.6 L398.8,352.8 L410.7,360 L422.6,348 L432.1,345.6 L451.2,342 L454.8,326.4 L460.7,314.4 L463.1,304.8 L466.7,294 L467.9,276 L482.1,270 L491.7,246 L495.2,230.4 L495.2,210 L489.3,195.6 L482.1,189.6 L475,180 L470.2,168 L458.3,162 L446.4,160.8 L440.5,144 L434.5,132 L416.7,122.4 L408.3,122.4 L402.4,108 L398.8,96 L397.6,90 L398.8,81.6 L398.8,66 L392.9,66 L386.9,60 L383.3,66 L378.6,66 L375,78 L357.1,114 L345.2,102 L333.3,102 L327.4,90 L309.5,102 L291.7,78 L285.7,66 L279.8,72 L273.8,90 L256,54 L226.2,36 L214.3,42 L208.3,66 L202.4,70.8 L190.5,72 L172.6,66 L160.7,60 L148.8,66 L136.9,84 L125,102 L119,108 L113.1,120 L101.2,129.6 L83.3,135.6 L71.4,138 L59.5,139.2 L47.6,139.2 L35.7,144 L25,153.6 Z"/>
+      <path fill="none" stroke-linejoin="round" d="M386.9,372 L396.4,374.4 L404.8,384 L432.1,384 L432.1,402 L422.6,408 L410.7,415.2 L400,414 L389.3,410.4 L386.9,402 L381,390 L386.9,372 Z"/>
+    </symbol>
+    <symbol id="logo" viewBox="0 0 500 430">
+      <use href="#aus" stroke="#a9c6e4" stroke-width="16"/>
+      <g stroke="#66ccff" stroke-width="12" stroke-linecap="round">
+        <line x1="392" y1="346" x2="300" y2="250"/>
+        <line x1="392" y1="346" x2="470" y2="226"/>
+        <line x1="392" y1="346" x2="250" y2="380"/>
+      </g>
+      <circle cx="392" cy="346" r="26" fill="#ffffff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <svg class="brand-logo" aria-hidden="true"><use href="#logo"/></svg>
+    <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">XLVI International Symposium</p>
+    <h1>Physics in Collisions <em>PIC 2027 · Melbourne</em></h1>
+    <p class="meta"><span>Melbourne, Australia</span></p>
+    <div class="status">
+      <span class="pill">Website coming soon</span>
+      <p>The full website, with registration, abstract submission, the program and travel information, will be available here soon.</p>
+      <p>The series began in Blacksburg, Virginia in 1981. In 2027 it comes to Australia for the first time.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2027 PIC 2027 · XLVI International Symposium on Physics in Collisions</span>
+    <span class="mono">Melbourne, Australia</span>
+  </div>
+</footer>
+
+</body>
+</html>
