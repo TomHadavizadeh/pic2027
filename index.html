@@ -3,94 +3,280 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="46th International Symposium on Physics in Collisions (PIC 2027), 20–23 September 2027, Monash College, 750 Collins Street, Melbourne.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Physics in Collisions 2027</title>
-<meta name="description" content="46th International Symposium on Physics in Collisions (PIC 2027), Melbourne, Australia. Full website coming soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Holding page: one dark detector-hall screen, same tokens and type as the full PIC 2027 site. */
+/* Layout: dark detector-hall bands (header, hero, footer) frame a cool paper body; one routed view per page, QLIME-style section stack. */
 :root {
+  --paper: #f3f6f9;
+  --surface: #ffffff;
+  --ink: #0d1a2b;
+  --muted: #536378;
+  --line: #d5dee8;
+  --accent: #0b6aa8;
+  --accent-ink: #ffffff;
+  --signal: #b9760a;
+  --chip: #e6eef6;
   --night: #050b17;
-  --ink: #e7eef7;
-  --muted: #93a7c2;
-  --line: rgba(147, 167, 194, 0.22);
+  --night-2: #0b1730;
+  --night-ink: #e7eef7;
+  --night-muted: #93a7c2;
+  --night-line: rgba(147, 167, 194, 0.22);
   --glow: #66ccff;
-  --signal: #f0b54a;
   --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --wrap: 1120px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #070f1c; --surface: #0c1829; --ink: #e5ecf4; --muted: #8fa2bb;
+    --line: #1d2e45; --accent: #5cc4ff; --accent-ink: #04111f; --signal: #f0b54a; --chip: #12233a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #070f1c; --surface: #0c1829; --ink: #e5ecf4; --muted: #8fa2bb;
+  --line: #1d2e45; --accent: #5cc4ff; --accent-ink: #04111f; --signal: #f0b54a; --chip: #12233a;
   color-scheme: dark;
 }
+
 * { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: var(--night) url("collision.jpg") 64% 50% / cover no-repeat;
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(5, 11, 23, 0.94) 0%, rgba(5, 11, 23, 0.72) 45%, rgba(5, 11, 23, 0.1) 80%);
-  pointer-events: none;
-}
-.wrap {
-  position: relative;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
-}
-header .wrap { display: flex; align-items: center; gap: 12px; padding-block: max(20px, env(safe-area-inset-top, 0px)) 20px; }
-.brand-logo { width: 46px; height: 40px; flex: none; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--night); }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.12; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tbc { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.04em; color: var(--signal); border: 1px dashed currentColor; border-radius: 3px; padding: 1px 6px; white-space: nowrap; }
+
+/* ── Header ── */
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(5, 11, 23, 0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--night-line); }
+.site-header .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--night-ink); text-decoration: none; margin-right: auto; }
+.brand svg { width: 42px; height: 36px; flex: none; }
 .brand-text { display: grid; line-height: 1.05; }
 .brand-text b { font-family: var(--display); font-stretch: 118%; font-weight: 700; font-size: 17px; letter-spacing: 0.02em; }
-.brand-text span { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+.brand-text span { font-family: var(--mono); font-size: 11px; color: var(--night-muted); letter-spacing: 0.06em; }
+.nav { display: flex; gap: 2px; }
+.nav a { color: var(--night-muted); text-decoration: none; font-size: 14px; padding: 8px 10px; border-radius: 4px; }
+.nav a:hover { color: var(--night-ink); }
+.nav a[aria-current="page"] { color: var(--night-ink); box-shadow: inset 0 -2px 0 var(--glow); border-radius: 0; }
+.menu-btn { display: none; align-items: center; gap: 8px; background: none; border: 1px solid var(--night-line); color: var(--night-ink); font: 500 14px var(--body); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.menu-btn svg { width: 16px; height: 16px; }
+.menu-panel { border-top: 1px solid var(--night-line); background: var(--night); }
+.menu-panel ul { list-style: none; margin: 0; padding: 8px 0 16px; display: grid; }
+.menu-panel a { display: block; color: var(--night-ink); text-decoration: none; font-family: var(--display); font-stretch: 112%; font-size: 20px; padding: 10px 0; border-bottom: 1px solid var(--night-line); }
+.menu-panel a[aria-current="page"] { color: var(--glow); }
+@media (max-width: 980px) { .nav { display: none; } .menu-btn { display: inline-flex; } }
+@media (min-width: 981px) { .menu-panel { display: none !important; } }
 
-main { flex: 1; display: flex; align-items: center; }
-main .wrap { padding-block: clamp(48px, 9vh, 120px); }
-.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); margin: 0; }
-.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-h1 { font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: clamp(42px, 7.4vw, 92px); letter-spacing: -0.015em; line-height: 0.98; margin: 18px 0 0; max-width: 11ch; text-wrap: balance; }
-h1 em { font-style: normal; display: block; font-stretch: 75%; font-weight: 500; font-size: 0.5em; letter-spacing: 0.01em; color: var(--muted); margin-top: 10px; }
-.meta { margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--mono); font-size: 14.5px; }
-.meta span + span::before { content: "·"; margin-right: 14px; color: var(--muted); }
-.status { margin-top: 40px; max-width: 520px; border-top: 1px solid var(--line); padding-top: 22px; display: grid; gap: 10px; }
-.pill { justify-self: start; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); border: 1px dashed currentColor; border-radius: 3px; padding: 2px 8px; }
-.status p { margin: 0; color: var(--muted); }
-.status p strong { color: var(--ink); font-weight: 500; }
+/* ── Buttons ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--body); text-decoration: none; padding: 12px 22px; border-radius: 4px; border: 1px solid transparent; cursor: pointer; }
+.btn-primary { background: var(--glow); color: #03101e; }
+.btn-primary:hover { background: #8ad9ff; }
+.btn-ghost { border-color: rgba(231, 238, 247, 0.4); color: var(--night-ink); background: rgba(5, 11, 23, 0.3); }
+.btn-ghost:hover { border-color: var(--night-ink); }
+.btn-solid { background: var(--accent); color: var(--accent-ink); }
+.btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 
-footer { position: relative; border-top: 1px solid var(--line); background: rgba(5, 11, 23, 0.6); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px max(18px, env(safe-area-inset-bottom, 0px)); font-size: 13px; color: var(--muted); }
-footer .mono { font-family: var(--mono); }
+/* ── Hero ── */
+.hero { position: relative; background: var(--night) url("collision.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 11, 23, 0.92) 0%, rgba(5, 11, 23, 0.7) 42%, rgba(5, 11, 23, 0.05) 75%); }
+.hero .wrap { position: relative; padding-block: clamp(72px, 12vw, 148px) clamp(56px, 8vw, 104px); }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
+.hero-eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.hero h1 { font-stretch: 125%; font-weight: 800; font-size: clamp(42px, 7.4vw, 92px); letter-spacing: -0.015em; line-height: 0.98; margin-top: 18px; max-width: 11ch; }
+.hero h1 em { font-style: normal; display: block; font-stretch: 75%; font-weight: 500; font-size: 0.5em; letter-spacing: 0.01em; color: var(--night-muted); margin-top: 10px; }
+.hero-meta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--mono); font-size: 14.5px; color: var(--night-ink); }
+.hero-meta span + span::before { content: "·"; margin-right: 14px; color: var(--night-muted); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero-note { margin-top: 44px; display: flex; align-items: center; gap: 14px; color: var(--night-muted); font-size: 14px; max-width: 520px; }
+.hero-note svg { width: 54px; height: 46px; flex: none; }
 
-@media (max-width: 640px) {
-  body { background-position: 72% 30%; }
-  .meta { flex-direction: column; gap: 2px; }
-  .meta span + span::before { content: none; }
-  body::before { background: linear-gradient(180deg, rgba(5, 11, 23, 0.6) 0%, rgba(5, 11, 23, 0.9) 55%); }
+/* ── Sub-page header ── */
+.page-head { position: relative; background: var(--night) url("collision.jpg") 75% 40% / cover no-repeat; color: var(--night-ink); }
+.page-head::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 11, 23, 0.95) 30%, rgba(5, 11, 23, 0.55)); }
+.page-head .wrap { position: relative; padding-block: clamp(48px, 7vw, 84px); }
+.page-head h1 { font-stretch: 120%; font-weight: 800; font-size: clamp(34px, 5.5vw, 60px); margin-top: 12px; }
+.page-head p { margin-top: 14px; color: var(--night-muted); max-width: 62ch; }
+
+/* ── Sections ── */
+.section { padding-block: clamp(56px, 8vw, 96px); }
+.section + .section { border-top: 1px solid var(--line); }
+.section.alt { background: var(--surface); }
+.kicker { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.section h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); margin-top: 10px; }
+.lede { margin-top: 16px; max-width: 66ch; color: var(--muted); font-size: 17px; }
+.prose { max-width: 66ch; display: grid; gap: 14px; }
+.prose p { color: var(--muted); }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+
+/* Topics */
+.topics { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); border-top: 1px solid var(--line); }
+.topics li { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); padding-right: 12px; font-weight: 500; }
+.topics .mono { color: var(--muted); font-size: 12px; min-width: 2ch; }
+
+/* Welcome to Melbourne */
+.welcome { background: var(--night-2); color: var(--night-ink); }
+.welcome .kicker { color: var(--glow); }
+.welcome .lede, .welcome .prose p { color: var(--night-muted); }
+.welcome-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.welcome-map { width: 100%; max-width: 520px; justify-self: center; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.fact { border-top: 1px solid var(--night-line); padding-top: 14px; }
+.fact b { display: block; font-family: var(--display); font-stretch: 115%; font-size: 22px; color: var(--night-ink); }
+.fact span { font-size: 14px; color: var(--night-muted); }
+@media (max-width: 860px) { .welcome-grid { grid-template-columns: minmax(0, 1fr); } .welcome-map { max-width: 340px; } }
+@media (max-width: 520px) { .facts { grid-template-columns: minmax(0, 1fr); } }
+
+/* People */
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 32px; margin-top: 28px; }
+.person { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.person b { display: block; font-weight: 600; }
+.person span { font-size: 14px; color: var(--muted); }
+.subhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; margin-top: 44px; }
+.subhead h3 { font-stretch: 108%; font-size: 21px; }
+.note { font-size: 14px; color: var(--muted); }
+.placeholder-box { margin-top: 24px; border: 1px dashed var(--line); border-radius: 6px; padding: 22px; color: var(--muted); display: grid; gap: 6px; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 24px; }
+.slot { border: 1px solid var(--line); border-radius: 6px; padding: 16px; background: var(--surface); display: grid; gap: 6px; }
+.slot b { font-weight: 600; }
+.slot span { font-size: 13px; color: var(--muted); font-family: var(--mono); }
+
+/* Dates */
+.dates { margin-top: 28px; border-top: 2px solid var(--ink); }
+.date-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.date-row .mono { font-size: 15px; }
+.date-row.confirmed .mono { color: var(--accent); font-weight: 500; }
+
+/* Info cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 32px; }
+.card { display: grid; gap: 8px; align-content: start; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; transition: border-color .15s, transform .15s; }
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card h3 { font-stretch: 110%; font-size: 19px; display: flex; justify-content: space-between; gap: 8px; }
+.card h3::after { content: "→"; color: var(--accent); font-family: var(--body); }
+.card p { color: var(--muted); font-size: 14.5px; }
+
+/* Past editions */
+.editions { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); row-gap: 22px; margin-top: 32px; }
+.edition { min-width: 0; padding: 14px 12px 6px 0; border-top: 2px solid var(--line); position: relative; }
+.edition::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--muted); }
+.edition .mono { font-size: 12px; color: var(--muted); display: block; }
+.edition b { font-weight: 600; font-size: 15px; }
+.edition.now { border-top-color: var(--accent); }
+.edition.now::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+.edition.now b { color: var(--accent); }
+.edition.gap { border-top-style: dashed; }
+.edition.gap::before { display: none; }
+
+/* Program */
+.legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; font-size: 14px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; background: var(--chip); color: var(--muted); white-space: nowrap; }
+.tag.plenary { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+.tag.parallel { background: color-mix(in srgb, #2f9e6b 18%, transparent); color: #2f9e6b; }
+.tag.social { background: color-mix(in srgb, var(--signal) 18%, transparent); color: var(--signal); }
+.day-nav { display: flex; gap: 8px; overflow-x: auto; margin-top: 36px; border-bottom: 1px solid var(--line); }
+.day-nav button { flex: none; background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; font: 500 15px var(--body); color: var(--muted); cursor: pointer; display: grid; text-align: left; }
+.day-nav button small { font-family: var(--mono); font-size: 12px; }
+.day-nav button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.day { margin-top: 8px; }
+.day-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 22px 0 10px; }
+.day-title h3 { font-stretch: 112%; font-size: 24px; }
+.day-title .mono { color: var(--muted); }
+.slot-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 4px 20px; padding: 14px 0; border-top: 1px solid var(--line); }
+.slot-row .time { font-family: var(--mono); font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.slot-row .what { display: grid; gap: 4px; justify-items: start; }
+.slot-row .what b { font-weight: 600; }
+.slot-row .what span { font-size: 14px; color: var(--muted); }
+.slot-row.brk .what b { font-weight: 400; color: var(--muted); }
+@media (max-width: 560px) { .slot-row { grid-template-columns: minmax(0, 1fr); } }
+
+/* Fees */
+.fee-table-wrap { overflow-x: auto; margin-top: 28px; }
+.fee-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.fee-table th, .fee-table td { padding: 18px 20px; text-align: left; border-bottom: 1px solid var(--line); }
+.fee-table thead th { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.fee-table tbody th { font-family: var(--display); font-stretch: 110%; font-size: 18px; }
+.fee-table tbody th small { display: block; font-family: var(--body); font-size: 13px; font-weight: 400; color: var(--muted); font-stretch: 100%; }
+.fee-table td { font-family: var(--mono); font-size: 18px; }
+.fee-table tr:last-child th, .fee-table tr:last-child td { border-bottom: 0; }
+@media (max-width: 560px) { .fee-table th, .fee-table td { padding: 14px 10px; } .fee-table tbody th { font-size: 16px; } .fee-table td { font-size: 15px; } }
+.incl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.incl > div { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; }
+.incl h3 { font-stretch: 108%; font-size: 18px; margin-bottom: 10px; }
+.incl ul, .plain-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.incl li, .plain-list li { padding-left: 22px; position: relative; color: var(--muted); }
+.incl li::before, .plain-list li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 10px; height: 2px; background: var(--accent); }
+.incl .no li::before { background: var(--muted); }
+@media (max-width: 700px) { .incl { grid-template-columns: minmax(0, 1fr); } }
+.policy { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 40px; margin-top: 28px; }
+.policy h3 { font-stretch: 108%; font-size: 18px; margin-bottom: 8px; }
+.policy p { color: var(--muted); font-size: 15px; }
+
+/* Venue */
+.addr { font-family: var(--mono); font-size: 15px; line-height: 1.7; margin-top: 18px; }
+.travel { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px 36px; margin-top: 32px; }
+.travel h3 { font-stretch: 108%; font-size: 18px; margin-bottom: 8px; }
+.travel p { color: var(--muted); font-size: 15px; }
+.mini-map { background: var(--night-2); border-radius: 8px; padding: 28px; display: grid; place-items: center; }
+.mini-map svg { width: 100%; max-width: 420px; height: auto; }
+
+/* Accommodation & excursions */
+.options { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+.option { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.option .badge { justify-self: start; font-family: var(--mono); font-size: 12px; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); padding: 2px 8px; border-radius: 999px; }
+.option h3 { font-stretch: 108%; font-size: 20px; }
+.option p { color: var(--muted); font-size: 15px; }
+.option .eg { font-size: 14px; color: var(--ink); }
+.option .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+.callout { margin-top: 28px; border-left: 3px solid var(--signal); background: var(--surface); padding: 16px 20px; border-radius: 0 6px 6px 0; color: var(--muted); }
+.callout b { color: var(--ink); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
+.contact-grid > div { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 8px; }
+.contact-grid h3 { font-stretch: 108%; font-size: 18px; }
+.contact-grid p { color: var(--muted); font-size: 15px; }
+
+/* Footer */
+.site-footer { background: var(--night); color: var(--night-muted); padding-block: 48px 40px; font-size: 14px; }
+.foot { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: 32px; }
+.foot h4 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--night-ink); font-weight: 500; margin-bottom: 12px; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot a { color: var(--night-muted); text-decoration: none; }
+.foot a:hover { color: var(--night-ink); }
+.foot .brand { margin-bottom: 14px; }
+.foot-base { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--night-line); font-size: 13px; }
+@media (max-width: 760px) { .foot { grid-template-columns: minmax(0, 1fr); } }
+
+.view[hidden] { display: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .view:not([hidden]) { animation: rise .35s ease-out; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
 }
 </style>
 </head>
 <body>
 
+<!-- Australia outline (reused line drawing) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="aus" viewBox="0 0 500 430">
       <path fill="none" stroke-linejoin="round" stroke-linecap="round" d="M25,153.6 L21.4,157.2 L20.2,180 L17.9,198 L23.8,210 L31,218.4 L31,235.2 L26.2,246 L34.5,258 L35.7,270 L44,288 L38.1,298.8 L36.9,303.6 L56,312 L76.2,313.2 L94,301.2 L116.7,298.8 L136.9,298.8 L159.5,298.8 L178.6,297.6 L202.4,297.6 L226.2,270 L232.1,270 L238.1,276 L256,276 L261.9,282 L272.6,319.2 L282.1,312 L292.9,314.4 L302.4,319.2 L310.7,321.6 L315.5,312 L320.2,309.6 L321.4,314.4 L331,331.2 L344,348 L352.4,352.8 L361.9,352.8 L375,356.4 L389.3,351.6 L398.8,352.8 L410.7,360 L422.6,348 L432.1,345.6 L451.2,342 L454.8,326.4 L460.7,314.4 L463.1,304.8 L466.7,294 L467.9,276 L482.1,270 L491.7,246 L495.2,230.4 L495.2,210 L489.3,195.6 L482.1,189.6 L475,180 L470.2,168 L458.3,162 L446.4,160.8 L440.5,144 L434.5,132 L416.7,122.4 L408.3,122.4 L402.4,108 L398.8,96 L397.6,90 L398.8,81.6 L398.8,66 L392.9,66 L386.9,60 L383.3,66 L378.6,66 L375,78 L357.1,114 L345.2,102 L333.3,102 L327.4,90 L309.5,102 L291.7,78 L285.7,66 L279.8,72 L273.8,90 L256,54 L226.2,36 L214.3,42 L208.3,66 L202.4,70.8 L190.5,72 L172.6,66 L160.7,60 L148.8,66 L136.9,84 L125,102 L119,108 L113.1,120 L101.2,129.6 L83.3,135.6 L71.4,138 L59.5,139.2 L47.6,139.2 L35.7,144 L25,153.6 Z"/>
       <path fill="none" stroke-linejoin="round" d="M386.9,372 L396.4,374.4 L404.8,384 L432.1,384 L432.1,402 L422.6,408 L410.7,415.2 L400,414 L389.3,410.4 L386.9,402 L381,390 L386.9,372 Z"/>
     </symbol>
+    <!-- Logo: outline plus a small collision burst at Melbourne -->
     <symbol id="logo" viewBox="0 0 500 430">
       <use href="#aus" stroke="#a9c6e4" stroke-width="16"/>
       <g stroke="#66ccff" stroke-width="12" stroke-linecap="round">
@@ -103,32 +289,574 @@ footer .mono { font-family: var(--mono); }
   </defs>
 </svg>
 
-<header>
+<header class="site-header">
   <div class="wrap">
-    <svg class="brand-logo" aria-hidden="true"><use href="#logo"/></svg>
-    <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
+    <a class="brand" href="#home" aria-label="PIC 2027 home">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#program">Program</a>
+      <a href="#registration">Registration</a>
+      <a href="#abstracts">Abstracts</a>
+      <a href="#venue">Venue</a>
+      <a href="#accommodation">Accommodation</a>
+      <a href="#excursions">Excursions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu-panel">
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect y="3" width="16" height="1.6"/><rect y="7.2" width="16" height="1.6"/><rect y="11.4" width="16" height="1.6"/></svg>
+      Menu
+    </button>
+  </div>
+  <div class="menu-panel" id="menu-panel" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#abstracts">Abstracts</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#accommodation">Accommodation</a></li>
+        <li><a href="#excursions">Excursions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </div>
 </header>
 
-<main>
-  <div class="wrap">
-    <p class="eyebrow">XLVI International Symposium</p>
-    <h1>Physics in Collisions <em>PIC 2027 · Melbourne</em></h1>
-    <p class="meta"><span>Melbourne, Australia</span></p>
-    <div class="status">
-      <span class="pill">Website coming soon</span>
-      <p>The full website, with registration, abstract submission, the program and travel information, will be available here soon.</p>
-      <p>The series began in Blacksburg, Virginia in 1981. In 2027 it comes to Australia for the first time.</p>
+<!-- ════════════════ HOME ════════════════ -->
+<main class="view" id="view-home" data-view="home">
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">XLVI International Symposium</p>
+      <h1>Physics in Collisions <em>PIC 2027 · Melbourne</em></h1>
+      <p class="hero-meta"><span>20–23 September 2027</span><span>Monash College, 750 Collins Street</span><span>Melbourne, Australia</span></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#registration">Registration</a>
+        <a class="btn btn-ghost" href="#program">View program</a>
+      </div>
+      <p class="hero-note">
+        <svg aria-hidden="true"><use href="#logo"/></svg>
+        <span>The series began in Blacksburg, Virginia in 1981. In 2027 it comes to Australia for the first time.</span>
+      </p>
     </div>
-  </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">About</p>
+        <h2>About PIC 2027</h2>
+        <div class="prose" style="margin-top:18px">
+          <p>Physics in Collisions updates the key topics in particle physics where new results have been published in the past year, or are expected before the symposium. Talks are designed to start informal discussion of new experimental results and what they imply.</p>
+          <p>The program covers experimental particle physics through to astroparticle physics, with invited plenary talks, contributed talks and posters. Selected posters are presented orally in a plenary session and included in the proceedings.</p>
+          <p>The 46th symposium is hosted in Melbourne at Monash College's Docklands campus, a short walk from Southern Cross Station.</p>
+        </div>
+      </div>
+      <div>
+        <p class="kicker">Scientific topics</p>
+        <ul class="topics" style="margin-top:18px">
+          <li><span class="mono">01</span>Higgs physics</li>
+          <li><span class="mono">02</span>Electroweak physics</li>
+          <li><span class="mono">03</span>QCD</li>
+          <li><span class="mono">04</span>Beyond the Standard Model</li>
+          <li><span class="mono">05</span>Flavour physics &amp; spectroscopy</li>
+          <li><span class="mono">06</span>Neutrino physics</li>
+          <li><span class="mono">07</span>Heavy-ion physics</li>
+          <li><span class="mono">08</span>Astroparticle physics</li>
+          <li><span class="mono">09</span>Dark matter searches</li>
+          <li><span class="mono">10</span>Gravitational waves</li>
+          <li><span class="mono">11</span>Cosmology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section welcome">
+    <div class="wrap welcome-grid">
+      <div>
+        <p class="kicker">Welcome to Melbourne</p>
+        <h2>Spring in Melbourne</h2>
+        <p class="lede">Late September is early spring in Melbourne. The venue sits on Collins Street at the western edge of the city centre, close to the Yarra River, the Docklands waterfront and the city's laneways.</p>
+        <div class="facts">
+          <div class="fact"><b>~17 °C</b><span>typical September daytime maximum</span></div>
+          <div class="fact"><b>300 m</b><span>from Southern Cross Station to the venue</span></div>
+          <div class="fact"><b>4 days</b><span>Monday 20 to Thursday 23 September</span></div>
+        </div>
+      </div>
+      <svg class="welcome-map" viewBox="0 0 500 430" role="img" aria-label="Outline of Australia with Melbourne marked">
+        <use href="#aus" stroke="#a9c6e4" stroke-width="2.2" opacity="0.9"/>
+        <circle cx="392" cy="346" r="22" fill="none" stroke="#66ccff" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="392" cy="346" r="11" fill="none" stroke="#66ccff" stroke-width="1.2" opacity="0.8"/>
+        <circle cx="392" cy="346" r="4.5" fill="#ffffff"/>
+        <line x1="392" y1="346" x2="345" y2="262" stroke="#66ccff" stroke-width="1"/>
+        <text x="340" y="252" text-anchor="end" fill="#e7eef7" font-family="IBM Plex Mono, monospace" font-size="15">Melbourne</text>
+        <text x="340" y="234" text-anchor="end" fill="#93a7c2" font-family="IBM Plex Mono, monospace" font-size="11">37.8° S 144.9° E</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">People</p>
+      <h2>Committees</h2>
+      <div class="subhead"><h3>Local Organising Committee</h3><span class="tbc">TBC</span></div>
+      <div class="placeholder-box">
+        <b style="color:var(--ink)">Monash University, Melbourne</b>
+        <span>Committee members will be listed here once confirmed.</span>
+      </div>
+      <div class="subhead"><h3>International Advisory Committee</h3><span class="note">As listed for PIC 2026. To be confirmed for 2027.</span></div>
+      <div class="people">
+        <div class="person"><b>Roy Briere</b><span>Carnegie Mellon University, Pittsburgh, USA</span></div>
+        <div class="person"><b>Jean-Marie Brom (Chair)</b><span>IPHC, Strasbourg, France</span></div>
+        <div class="person"><b>Elisabetta Gallo</b><span>DESY, Hamburg, Germany</span></div>
+        <div class="person"><b>Ulrich Heintz</b><span>Brown University, Providence, USA</span></div>
+        <div class="person"><b>Sonia Kabana</b><span>Universidad de Tarapacá, Arica, Chile</span></div>
+        <div class="person"><b>Michal Kreps</b><span>University of Warwick, Coventry, UK</span></div>
+        <div class="person"><b>Livia Ludhova</b><span>GSI, Darmstadt and JGU, Mainz, Germany</span></div>
+        <div class="person"><b>Christos Markou</b><span>NCSR Demokritos, Athens, Greece</span></div>
+        <div class="person"><b>Thomas Müller</b><span>KIT, Karlsruhe, Germany</span></div>
+        <div class="person"><b>Revaz Shanidze</b><span>Tbilisi State University, Georgia</span></div>
+        <div class="person"><b>Xiaoyan Shen</b><span>IHEP, Beijing, China</span></div>
+        <div class="person"><b>Bernd Stelzer</b><span>Simon Fraser University and TRIUMF, Canada</span></div>
+        <div class="person"><b>Dong Su</b><span>SLAC, Menlo Park, USA</span></div>
+        <div class="person"><b>Yuji Yamazaki</b><span>Kobe University, Japan</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">Speakers</p>
+      <h2>Invited plenary speakers</h2>
+      <p class="lede">Invited speakers will be announced here as they confirm. Each plenary session reviews one area of the field.</p>
+      <div class="slots">
+        <div class="slot"><b>Higgs physics</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Electroweak physics</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>QCD</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Heavy-ion physics</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Flavour &amp; spectroscopy</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Neutrino physics</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Beyond the Standard Model</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Dark matter searches</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Astroparticle physics</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Gravitational waves</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Cosmology</b><span>Speaker TBA</span></div>
+        <div class="slot"><b>Experimental summary</b><span>Speaker TBA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Timeline</p>
+        <h2>Important dates</h2>
+        <p class="lede">Deadlines will be published here once set. The conference dates are confirmed.</p>
+      </div>
+      <div class="dates">
+        <div class="date-row"><span>Registration opens</span><span class="tbc">TBC</span></div>
+        <div class="date-row"><span>Abstract submission opens</span><span class="tbc">TBC</span></div>
+        <div class="date-row"><span>Abstract submission closes</span><span class="tbc">TBC</span></div>
+        <div class="date-row"><span>Early-bird registration closes</span><span class="tbc">TBC</span></div>
+        <div class="date-row"><span>Registration closes</span><span class="tbc">TBC</span></div>
+        <div class="date-row confirmed"><span>Conference</span><span class="mono">20–23 Sep 2027</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">Information</p>
+      <h2>Conference information</h2>
+      <div class="cards">
+        <a class="card" href="#program"><h3>Program</h3><p>Three days of plenary talks, a morning of parallel sessions, and the social program.</p></a>
+        <a class="card" href="#registration"><h3>Registration</h3><p>Early-bird and normal fees for standard and student delegates.</p></a>
+        <a class="card" href="#abstracts"><h3>Abstracts</h3><p>Guidelines for contributed talks and posters.</p></a>
+        <a class="card" href="#venue"><h3>Venue</h3><p>Monash College, 750 Collins Street, Docklands, and how to get there.</p></a>
+        <a class="card" href="#accommodation"><h3>Accommodation</h3><p>Where to stay in Docklands, South Wharf and the city centre.</p></a>
+        <a class="card" href="#excursions"><h3>Excursions</h3><p>Half-day excursion options on Wednesday afternoon, and longer trips after the conference.</p></a>
+        <a class="card" href="#contact"><h3>Contact</h3><p>Conference secretariat and organising committee.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">Since 1981</p>
+      <h2>Previous editions</h2>
+      <div class="editions" role="list">
+        <div class="edition" role="listitem"><span class="mono">1st · 1981</span><b>Blacksburg</b></div>
+        <div class="edition gap" role="listitem" aria-label="Editions 2 to 37"><span class="mono">…</span><b>&nbsp;</b></div>
+        <div class="edition" role="listitem"><span class="mono">38th · 2018</span><b>Bogotá</b></div>
+        <div class="edition" role="listitem"><span class="mono">39th · 2019</span><b>Taipei</b></div>
+        <div class="edition" role="listitem"><span class="mono">40th · 2021</span><b>Aachen</b></div>
+        <div class="edition" role="listitem"><span class="mono">41st · 2022</span><b>Tbilisi</b></div>
+        <div class="edition" role="listitem"><span class="mono">42nd · 2023</span><b>Arica</b></div>
+        <div class="edition" role="listitem"><span class="mono">43rd · 2024</span><b>Athens</b></div>
+        <div class="edition" role="listitem"><span class="mono">44th · 2025</span><b>Giza</b></div>
+        <div class="edition" role="listitem"><span class="mono">45th · 2026</span><b>Quy Nhon</b></div>
+        <div class="edition now" role="listitem"><span class="mono">46th · 2027</span><b>Melbourne</b></div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
+<!-- ════════════════ PROGRAM ════════════════ -->
+<main class="view" id="view-program" data-view="program" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Program</h1>
+    <p>Provisional outline, subject to change. Session themes follow the scientific topics; speakers will be added as they confirm.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap">
+      <div class="legend">
+        <span><i class="tag plenary">Plenary</i> Invited review talks</span>
+        <span><i class="tag parallel">Parallel</i> Contributed talks</span>
+        <span><i class="tag social">Social</i> Social program</span>
+        <span><i class="tag">Break</i> Refreshments and lunch</span>
+      </div>
+      <div class="day-nav" role="tablist" aria-label="Conference days">
+        <button role="tab" aria-selected="true" data-day="mon">Monday<small>20 Sep</small></button>
+        <button role="tab" aria-selected="false" data-day="tue">Tuesday<small>21 Sep</small></button>
+        <button role="tab" aria-selected="false" data-day="wed">Wednesday<small>22 Sep</small></button>
+        <button role="tab" aria-selected="false" data-day="thu">Thursday<small>23 Sep</small></button>
+      </div>
+
+      <div class="day" data-day-panel="mon">
+        <div class="day-title"><h3>Monday</h3><span class="mono">20 September 2027</span></div>
+        <div class="slot-row brk"><span class="time">08:15</span><div class="what"><b>Registration and coffee</b></div></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Opening</b><span>Welcome from the organisers</span></div></div>
+        <div class="slot-row"><span class="time">09:20</span><div class="what"><i class="tag plenary">Plenary</i><b>Higgs physics</b></div></div>
+        <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Electroweak physics</b></div></div>
+        <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>QCD</b></div></div>
+        <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea</b></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Heavy-ion physics</b></div></div>
+        <div class="slot-row"><span class="time">18:00</span><div class="what"><i class="tag social">Social</i><b>Welcome drinks</b><span>At the venue, 750 Collins Street</span></div></div>
+      </div>
+
+      <div class="day" data-day-panel="tue" hidden>
+        <div class="day-title"><h3>Tuesday</h3><span class="mono">21 September 2027</span></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Flavour physics &amp; spectroscopy</b></div></div>
+        <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Neutrino physics</b></div></div>
+        <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Beyond the Standard Model</b></div></div>
+        <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea and posters</b><span>Posters are on display throughout the conference</span></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Dark matter searches</b><span>Followed by selected poster presentations</span></div></div>
+      </div>
+
+      <div class="day" data-day-panel="wed" hidden>
+        <div class="day-title"><h3>Wednesday</h3><span class="mono">22 September 2027</span></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag parallel">Parallel</i><b>Parallel sessions I</b><span>Contributed talks in concurrent tracks</span></div></div>
+        <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
+        <div class="slot-row"><span class="time">11:00</span><div class="what"><i class="tag parallel">Parallel</i><b>Parallel sessions II</b></div></div>
+        <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
+        <div class="slot-row"><span class="time">13:30</span><div class="what"><i class="tag social">Social</i><b>Excursions</b><span>Optional, booked separately. <a href="#excursions">See the options</a></span></div></div>
+        <div class="slot-row"><span class="time">19:00</span><div class="what"><i class="tag social">Social</i><b>Conference dinner</b><span>Melbourne CBD, venue to be announced. Included in registration.</span></div></div>
+      </div>
+
+      <div class="day" data-day-panel="thu" hidden>
+        <div class="day-title"><h3>Thursday</h3><span class="mono">23 September 2027</span></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Astroparticle physics</b></div></div>
+        <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Gravitational waves</b></div></div>
+        <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Cosmology</b></div></div>
+        <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea</b></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Experimental and theoretical summaries</b></div></div>
+        <div class="slot-row"><span class="time">17:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Closing</b><span>Announcement of PIC 2028</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ REGISTRATION ════════════════ -->
+<main class="view" id="view-registration" data-view="registration" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Registration</h1>
+    <p>Registration will open soon. Fees and deadlines will be published here.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#registration" aria-disabled="true" onclick="return false">Register now · opening soon</a>
+      <a class="btn btn-ghost" href="#contact">Request a visa invitation letter</a>
+    </div>
+  </div></header>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">Fees</p>
+      <h2>Fees &amp; inclusions</h2>
+      <p class="lede">All fees are in Australian dollars (AUD).</p>
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <thead><tr><th scope="col">Category</th><th scope="col">Early bird</th><th scope="col">Normal</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Standard<small>Academic and industry delegates</small></th><td><span class="tbc">AUD TBC</span></td><td><span class="tbc">AUD TBC</span></td></tr>
+            <tr><th scope="row">Student<small>Enrolled students, proof required</small></th><td><span class="tbc">AUD TBC</span></td><td><span class="tbc">AUD TBC</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:12px">Early-bird deadline: <span class="tbc">TBC</span></p>
+      <div class="incl">
+        <div>
+          <h3>Included in the fee</h3>
+          <ul>
+            <li>Entry to all plenary and parallel sessions</li>
+            <li>Lunch on each conference day</li>
+            <li>Morning and afternoon refreshments</li>
+            <li>Conference dinner (Wednesday 22 September)</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3>Not included</h3>
+          <ul>
+            <li>Excursions. These are organised by the conference and booked separately.</li>
+            <li>Accommodation and travel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">Policies</p>
+      <h2>Before you register</h2>
+      <div class="policy">
+        <div><h3>Letter of invitation</h3><p>Delegates who need an invitation letter for a visa application can request one from the secretariat. Check Australian visa requirements early, as processing times vary.</p></div>
+        <div><h3>Payment methods</h3><p>Accepted payment methods will be listed when registration opens. <span class="tbc">TBC</span></p></div>
+        <div><h3>Cancellation and refunds</h3><p>The refund schedule will be published when registration opens. <span class="tbc">TBC</span></p></div>
+        <div><h3>Insurance</h3><p>Registration does not include travel or medical insurance. Delegates should arrange their own cover.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ ABSTRACTS ════════════════ -->
+<main class="view" id="view-abstracts" data-view="abstracts" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Abstract submission</h1>
+    <p>Abstracts for contributed talks and posters of interest to the particle-physics community are welcome.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Formats</p>
+        <h2>How to contribute</h2>
+        <div class="prose" style="margin-top:18px">
+          <p>The program is made up of invited plenary talks, contributed talks and posters. Contributed talks run in the parallel sessions on Wednesday morning.</p>
+          <p>Posters are on display throughout the conference. Selected posters are presented orally in a plenary session, and those contributions are included in the proceedings.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#abstracts" aria-disabled="true" onclick="return false">Submission portal · opening soon</a>
+        </div>
+      </div>
+      <div>
+        <p class="kicker">Key dates</p>
+        <div class="dates">
+          <div class="date-row"><span>Abstract submission opens</span><span class="tbc">TBC</span></div>
+          <div class="date-row"><span>Abstract submission closes</span><span class="tbc">TBC</span></div>
+          <div class="date-row"><span>Notification of acceptance</span><span class="tbc">TBC</span></div>
+          <div class="date-row"><span>Proceedings deadline</span><span class="tbc">TBC</span></div>
+        </div>
+        <p class="kicker" style="margin-top:36px">When you submit</p>
+        <ul class="plain-list" style="margin-top:14px">
+          <li>Choose a preference: contributed talk, poster, or either</li>
+          <li>Select the closest scientific topic</li>
+          <li>Give a title, author list and affiliations, and the presenting author</li>
+          <li>Keep the abstract to a short paragraph</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ VENUE ════════════════ -->
+<main class="view" id="view-venue" data-view="venue" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Venue</h1>
+    <p>Monash College's Docklands campus at 750 Collins Street, on the western edge of Melbourne's city centre.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Getting there</p>
+        <h2>750 Collins Street</h2>
+        <p class="addr">Monash College<br>750 Collins Street<br>Docklands VIC 3008<br>Australia</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&amp;query=750+Collins+Street+Docklands+VIC" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+        <div class="dates" style="margin-top:32px">
+          <div class="date-row confirmed"><span>Dates</span><span class="mono">20–23 Sep 2027</span></div>
+          <div class="date-row"><span>Nearest station</span><span class="mono">Southern Cross · 300 m</span></div>
+          <div class="date-row"><span>Trams</span><span class="mono">Routes 11 &amp; 48</span></div>
+        </div>
+      </div>
+      <div class="mini-map">
+        <svg viewBox="0 0 500 430" role="img" aria-label="Outline of Australia with Melbourne marked">
+          <use href="#aus" stroke="#a9c6e4" stroke-width="2.2"/>
+          <circle cx="392" cy="346" r="11" fill="none" stroke="#66ccff" stroke-width="1.2"/>
+          <circle cx="392" cy="346" r="4.5" fill="#ffffff"/>
+          <text x="372" y="330" text-anchor="end" fill="#e7eef7" font-family="IBM Plex Mono, monospace" font-size="15">Melbourne</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">Travel</p>
+      <h2>Arriving in Melbourne</h2>
+      <div class="travel">
+        <div><h3>From Melbourne Airport</h3><p>The SkyBus express runs from Melbourne Airport (MEL) to Southern Cross Station, about 300 m from the venue. Taxis and rideshare take around 30 minutes outside peak hours.</p></div>
+        <div><h3>By train</h3><p>Take any City Loop train to Southern Cross Station, then walk west along Collins Street. Regional V/Line services also arrive at Southern Cross.</p></div>
+        <div><h3>By tram</h3><p>Routes 11 and 48 run along Collins Street from the north and east of the city and stop right outside the building.</p></div>
+        <div><h3>By bus</h3><p>Routes 232, 235 and 237 stop directly in front of the building.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ ACCOMMODATION ════════════════ -->
+<main class="view" id="view-accommodation" data-view="accommodation" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Accommodation</h1>
+    <p>Accommodation is not included in the registration fee. The venue is well served by trams and trains, so most of the city centre is within easy reach.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">Where to stay</p>
+      <h2>Areas near the venue</h2>
+      <div class="options">
+        <article class="option"><span class="badge">Walk · 5–10 min</span><h3>Docklands</h3><p>Hotels and serviced apartments around Collins Square and the Docklands waterfront, right next to the venue.</p><p class="eg">e.g. Travelodge Docklands, Quest Docklands</p></article>
+        <article class="option"><span class="badge">Walk · 5–10 min</span><h3>Southern Cross &amp; Spencer Street</h3><p>Convenient for the SkyBus from the airport and for regional trains.</p><p class="eg">e.g. Peppers Southern Cross</p></article>
+        <article class="option"><span class="badge">Walk · 15 min</span><h3>South Wharf</h3><p>Larger hotels on the south bank of the Yarra River, a walk across the river to the venue.</p><p class="eg">e.g. Pan Pacific Melbourne, Novotel South Wharf</p></article>
+        <article class="option"><span class="badge">Tram · 10–20 min</span><h3>Central Melbourne</h3><p>Stay anywhere along Collins Street and ride trams 11 or 48 to the door. Close to restaurants, laneways and the dinner venue.</p><p class="eg">Wide range of budgets</p></article>
+      </div>
+      <div class="callout"><b>Booking tips.</b> Book early. No room blocks have been arranged yet <span class="tbc">TBC</span>. Check visa documentation well before travel. The hotels listed are examples, not endorsements.</div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ EXCURSIONS ════════════════ -->
+<main class="view" id="view-excursions" data-view="excursions" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Excursions</h1>
+    <p>Excursions are organised by the conference but are not included in the registration fee. Options and prices will be confirmed when registration opens.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">Wednesday 22 September · 13:30</p>
+      <h2>Half-day excursion options</h2>
+      <p class="lede">All options return to the city in time for the conference dinner.</p>
+      <div class="options">
+        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Yarra Valley wineries</h3><p>Cellar-door tastings and local produce in one of Victoria's best-known wine regions, north-east of Melbourne.</p><div class="meta"><span>Food &amp; wine</span><span>Return ~18:00</span></div></article>
+        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Healesville Sanctuary</h3><p>Australian wildlife in a bushland setting, including koalas, kangaroos, wombats and platypus.</p><div class="meta"><span>Wildlife</span><span>Return ~18:00</span></div></article>
+        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Puffing Billy &amp; the Dandenong Ranges</h3><p>A heritage steam railway through the forested hills east of the city, with a stop in a hill village.</p><div class="meta"><span>Heritage &amp; nature</span><span>Return ~18:00</span></div></article>
+        <article class="option"><span class="badge">Coach · ~45 min each way</span><h3>Australian Synchrotron</h3><p>A 90-minute guided tour of Australia's national synchrotron light source in Clayton, next to Monash University's main campus.</p><div class="meta"><span>Science</span><span>Return ~17:00</span></div></article>
+        <article class="option"><span class="badge">On foot · from the venue</span><h3>Melbourne city walk</h3><p>A guided walk through the city's laneways, arcades and street art, ending along the Yarra close to the dinner venue.</p><div class="meta"><span>City</span><span>Low cost</span></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">Friday 24 September onwards</p>
+      <h2>After the conference</h2>
+      <p class="lede">Full-day trips for delegates who are staying on. These are too long for Wednesday afternoon.</p>
+      <div class="options">
+        <article class="option"><span class="badge">Full day</span><h3>Great Ocean Road &amp; Twelve Apostles</h3><p>A coastal drive south-west of Melbourne to the limestone stacks of Port Campbell National Park.</p></article>
+        <article class="option"><span class="badge">Afternoon to late evening</span><h3>Phillip Island Penguin Parade</h3><p>Watch little penguins come ashore at sunset on Phillip Island, about two hours south-east of the city.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ CONTACT ════════════════ -->
+<main class="view" id="view-contact" data-view="contact" hidden>
+  <header class="page-head"><div class="wrap">
+    <p class="hero-eyebrow">PIC 2027</p>
+    <h1>Contact</h1>
+    <p>Contact details will be published here soon.</p>
+  </div></header>
+  <section class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div><h3>Conference secretariat</h3><p>Registration, invoices, visa invitation letters and general enquiries.</p><span class="tbc">Email TBC</span></div>
+        <div><h3>Scientific program</h3><p>Abstracts, talks, posters and proceedings.</p><span class="tbc">Email TBC</span></div>
+        <div><h3>Venue</h3><p class="mono" style="color:var(--ink)">Monash College<br>750 Collins Street<br>Docklands VIC 3008</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
   <div class="wrap">
-    <span>© 2027 PIC 2027 · XLVI International Symposium on Physics in Collisions</span>
-    <span class="mono">Melbourne, Australia</span>
+    <div class="foot">
+      <div>
+        <a class="brand" href="#home" aria-label="PIC 2027 home">
+          <svg aria-hidden="true"><use href="#logo"/></svg>
+          <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
+        </a>
+        <p>20–23 September 2027<br>Monash College, 750 Collins Street, Melbourne</p>
+      </div>
+      <div>
+        <h4>Conference</h4>
+        <ul><li><a href="#program">Program</a></li><li><a href="#registration">Registration</a></li><li><a href="#abstracts">Abstracts</a></li></ul>
+      </div>
+      <div>
+        <h4>Visiting</h4>
+        <ul><li><a href="#venue">Venue</a></li><li><a href="#accommodation">Accommodation</a></li><li><a href="#excursions">Excursions</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <p class="foot-base">© 2027 PIC 2027 · XLVI International Symposium on Physics in Collisions · Melbourne, Australia</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  var names = views.map(function (v) { return v.dataset.view; });
+  var menuBtn = document.getElementById('menu-btn');
+  var panel = document.getElementById('menu-panel');
+
+  function setMenu(open) {
+    panel.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function () { setMenu(panel.hidden); });
+
+  function route() {
+    var name = (location.hash || '').replace('#', '');
+    if (names.indexOf(name) === -1) name = 'home';
+    views.forEach(function (v) { v.hidden = v.dataset.view !== name; });
+    document.querySelectorAll('.nav a, .menu-panel a').forEach(function (a) {
+      if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    setMenu(false);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // Program day tabs
+  var tabs = document.querySelectorAll('.day-nav button');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (o) { o.setAttribute('aria-selected', String(o === t)); });
+      document.querySelectorAll('[data-day-panel]').forEach(function (p) { p.hidden = p.dataset.dayPanel !== t.dataset.day; });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
