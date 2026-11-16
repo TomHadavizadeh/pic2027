@@ -97,11 +97,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 
 /* ── Hero ── */
-.hero { position: relative; background: var(--night) url("collision-pic2027.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
-/* Below ~1180px the hero text would cover the logo in collision-pic2027.jpg, so use the plain image */
-@media (max-width: 1179px) { .hero { background-image: url("collision.jpg"); } }
+.hero { position: relative; background: var(--night) url("collision.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 11, 23, 0.92) 0%, rgba(5, 11, 23, 0.7) 42%, rgba(5, 11, 23, 0.05) 75%); }
 .hero .wrap { position: relative; padding-block: clamp(72px, 12vw, 148px) clamp(56px, 8vw, 104px); }
+.hero-logo { display: block; width: clamp(76px, 8vw, 104px); height: auto; margin-bottom: 22px; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
 .hero-eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
 .hero h1 { font-stretch: 125%; font-weight: 800; font-size: clamp(42px, 7.4vw, 92px); letter-spacing: -0.015em; line-height: 0.98; margin-top: 18px; max-width: 11ch; }
@@ -345,6 +344,7 @@ a.edition:hover::before { border-color: var(--accent); }
 <main class="view" id="view-home" data-view="home">
   <section class="hero">
     <div class="wrap">
+      <img class="hero-logo" src="pic2027-logo.svg" width="104" height="104" alt="PIC 2027 logo: Melbourne, Australia, 20–23 September 2027">
       <p class="hero-eyebrow">XLVI International Symposium</p>
       <h1>Physics in Collisions <em>PIC 2027 · Melbourne</em></h1>
       <p class="hero-meta"><span>20–23 September 2027</span><span>Monash College, 750 Collins Street</span><span>Melbourne, Australia</span></p>
