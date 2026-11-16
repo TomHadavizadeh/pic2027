@@ -6,6 +6,14 @@
 <meta name="description" content="46th International Symposium on Physics in Collisions (PIC 2027), 20–23 September 2027, Monash College, 750 Collins Street, Melbourne.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Physics in Collisions 2027</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Physics in Collisions 2027 (PIC 2027) · Melbourne">
+<meta property="og:description" content="46th International Symposium on Physics in Collisions, 20–23 September 2027, Monash College, Melbourne.">
+<meta property="og:image" content="https://tomhadavizadeh.github.io/pic2027/pic2027-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -89,7 +97,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 
 /* ── Hero ── */
-.hero { position: relative; background: var(--night) url("collision.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
+.hero { position: relative; background: var(--night) url("collision-pic2027.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
+/* Below ~1180px the hero text would cover the logo in collision-pic2027.jpg, so use the plain image */
+@media (max-width: 1179px) { .hero { background-image: url("collision.jpg"); } }
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 11, 23, 0.92) 0%, rgba(5, 11, 23, 0.7) 42%, rgba(5, 11, 23, 0.05) 75%); }
 .hero .wrap { position: relative; padding-block: clamp(72px, 12vw, 148px) clamp(56px, 8vw, 104px); }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
@@ -108,6 +118,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .page-head .wrap { position: relative; padding-block: clamp(48px, 7vw, 84px); }
 .page-head h1 { font-stretch: 120%; font-weight: 800; font-size: clamp(34px, 5.5vw, 60px); margin-top: 12px; }
 .page-head p { margin-top: 14px; color: var(--night-muted); max-width: 62ch; }
+.page-head a { color: var(--glow); }
 
 /* ── Sections ── */
 .section { padding-block: clamp(56px, 8vw, 96px); }
@@ -176,8 +187,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .edition.now { border-top-color: var(--accent); }
 .edition.now::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
 .edition.now b { color: var(--accent); }
-.edition.gap { border-top-style: dashed; }
-.edition.gap::before { display: none; }
+.edition .where { display: block; font-size: 13px; color: var(--muted); }
+a.edition { color: var(--ink); text-decoration: none; }
+a.edition b { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+a.edition:hover b { color: var(--accent); text-decoration-color: currentColor; }
+a.edition:hover::before { border-color: var(--accent); }
 
 /* Program */
 .legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; font-size: 14px; color: var(--muted); }
@@ -257,6 +271,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .foot a { color: var(--night-muted); text-decoration: none; }
 .foot a:hover { color: var(--night-ink); }
 .foot .brand { margin-bottom: 14px; }
+.foot-logo { display: block; width: 112px; height: 112px; margin-bottom: 18px; }
 .foot-base { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--night-line); font-size: 13px; }
 @media (max-width: 760px) { .foot { grid-template-columns: minmax(0, 1fr); } }
 
@@ -296,6 +311,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
       <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
     </a>
     <nav class="nav" aria-label="Main">
+      <a href="#home">Home</a>
       <a href="#program">Program</a>
       <a href="#registration">Registration</a>
       <a href="#abstracts">Abstracts</a>
@@ -413,10 +429,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
         <div class="person"><b>Eric Thane</b><span>Monash University, Melbourne, Australia</span></div>
         <div class="person"><b>German Valencia</b><span>Monash University, Melbourne, Australia</span></div>
       </div>
-      <div class="placeholder-box">
-        <b style="color:var(--ink)">Monash University, Melbourne</b>
-        <span>Committee members will be listed here once confirmed.</span>
-      </div>
       <div class="subhead"><h3>International Advisory Committee</h3></div>
       <div class="people">
         <div class="person"><b>Tom Hadavizadeh (Chair)</b><span>Monash University, Melbourne, Australia</span></div>
@@ -498,17 +510,52 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
       <p class="kicker">Since 1981</p>
       <h2>Previous editions</h2>
       <div class="editions" role="list">
-        <div class="edition" role="listitem"><span class="mono">1st · 1981</span><b>Blacksburg</b></div>
-        <div class="edition gap" role="listitem" aria-label="Editions 2 to 37"><span class="mono">…</span><b>&nbsp;</b></div>
-        <div class="edition" role="listitem"><span class="mono">38th · 2018</span><b>Bogotá</b></div>
-        <div class="edition" role="listitem"><span class="mono">39th · 2019</span><b>Taipei</b></div>
-        <div class="edition" role="listitem"><span class="mono">40th · 2021</span><b>Aachen</b></div>
-        <div class="edition" role="listitem"><span class="mono">41st · 2022</span><b>Tbilisi</b></div>
-        <div class="edition" role="listitem"><span class="mono">42nd · 2023</span><b>Arica</b></div>
-        <div class="edition" role="listitem"><span class="mono">43rd · 2024</span><b>Athens</b></div>
-        <div class="edition" role="listitem"><span class="mono">44th · 2025</span><b>Giza</b></div>
-        <div class="edition" role="listitem"><span class="mono">45th · 2026</span><b>Quy Nhon</b></div>
-        <div class="edition now" role="listitem"><span class="mono">46th · 2027</span><b>Melbourne</b></div>
+        <div class="edition now" role="listitem"><span class="mono">46th · 2027</span><b>Melbourne</b><span class="where">Australia</span></div>
+        <a class="edition" role="listitem" href="https://vietnam.in2p3.fr/2026/pic/" target="_blank" rel="noopener"><span class="mono">45th · 2026</span><b>Quy Nhon</b><span class="where">Vietnam</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/1488071/" target="_blank" rel="noopener"><span class="mono">44th · 2025</span><b>Giza</b><span class="where">Egypt</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/1414470/" target="_blank" rel="noopener"><span class="mono">43rd · 2024</span><b>Athens</b><span class="where">Greece</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/1190468/" target="_blank" rel="noopener"><span class="mono">42nd · 2023</span><b>Arica</b><span class="where">Chile</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/1158815/" target="_blank" rel="noopener"><span class="mono">41st · 2022</span><b>Tbilisi</b><span class="where">Georgia</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/881530/" target="_blank" rel="noopener"><span class="mono">40th · 2021</span><b>Aachen</b><span class="where">Germany</span></a>
+        <a class="edition" role="listitem" href="https://hep5.phys.ntu.edu.tw/event/364/" target="_blank" rel="noopener"><span class="mono">39th · 2019</span><b>Taipei</b><span class="where">Taiwan</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/674840/" target="_blank" rel="noopener"><span class="mono">38th · 2018</span><b>Bogotá</b><span class="where">Colombia</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/594028/" target="_blank" rel="noopener"><span class="mono">37th · 2017</span><b>Prague</b><span class="where">Czech Republic</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/456448/" target="_blank" rel="noopener"><span class="mono">36th · 2016</span><b>Quy Nhon</b><span class="where">Vietnam</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/374792/" target="_blank" rel="noopener"><span class="mono">35th · 2015</span><b>Warwick</b><span class="where">UK</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/335292/" target="_blank" rel="noopener"><span class="mono">34th · 2014</span><b>Bloomington</b><span class="where">USA</span></a>
+        <a class="edition" role="listitem" href="https://indico.ihep.ac.cn/event/2989/" target="_blank" rel="noopener"><span class="mono">33rd · 2013</span><b>Beijing</b><span class="where">China</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/170556/" target="_blank" rel="noopener"><span class="mono">32nd · 2012</span><b>Štrbské Pleso</b><span class="where">Slovakia</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/117880/" target="_blank" rel="noopener"><span class="mono">31st · 2011</span><b>Vancouver</b><span class="where">Canada</span></a>
+        <a class="edition" role="listitem" href="https://indico.cern.ch/event/90023/" target="_blank" rel="noopener"><span class="mono">30th · 2010</span><b>Karlsruhe</b><span class="where">Germany</span></a>
+        <a class="edition" role="listitem" href="https://www.research.kobe-u.ac.jp/fsci-epp/pic2009/" target="_blank" rel="noopener"><span class="mono">29th · 2009</span><b>Kobe</b><span class="where">Japan</span></a>
+        <a class="edition" role="listitem" href="https://www.pg.infn.it/pic08/" target="_blank" rel="noopener"><span class="mono">28th · 2008</span><b>Perugia</b><span class="where">Italy</span></a>
+        <a class="edition" role="listitem" href="https://lappweb.in2p3.fr/archives/PIC07/" target="_blank" rel="noopener"><span class="mono">27th · 2007</span><b>Annecy</b><span class="where">France</span></a>
+        <a class="edition" role="listitem" href="https://www.slac.stanford.edu/econf/C060706/" target="_blank" rel="noopener"><span class="mono">26th · 2006</span><b>Búzios</b><span class="where">Brazil</span></a>
+        <a class="edition" role="listitem" href="https://web.archive.org/web/20071030001943/http://www.particle.cz:80/conferences/pic2005/index.aspx?page=pro" target="_blank" rel="noopener"><span class="mono">25th · 2005</span><b>Prague</b><span class="where">Czech Republic</span></a>
+        <a class="edition" role="listitem" href="http://physics.bu.edu/pic2004/" target="_blank" rel="noopener"><span class="mono">24th · 2004</span><b>Boston</b><span class="where">USA</span></a>
+        <a class="edition" role="listitem" href="https://www.zeuthen.desy.de/pic2003/" target="_blank" rel="noopener"><span class="mono">23rd · 2003</span><b>Zeuthen</b><span class="where">Germany</span></a>
+        <a class="edition" role="listitem" href="https://www.slac.stanford.edu/econf/C020620/" target="_blank" rel="noopener"><span class="mono">22nd · 2002</span><b>Stanford</b><span class="where">USA</span></a>
+        <a class="edition" role="listitem" href="https://web.archive.org/web/20060717044636/http://neutrino.snu.ac.kr/pic2001/" target="_blank" rel="noopener"><span class="mono">21st · 2001</span><b>Seoul</b><span class="where">Korea</span></a>
+        <a class="edition" role="listitem" href="https://events.lip.pt/2000/pic20/?section=events&amp;page=2000&amp;area=pic20" target="_blank" rel="noopener"><span class="mono">20th · 2000</span><b>Lisbon</b><span class="where">Portugal</span></a>
+        <div class="edition" role="listitem"><span class="mono">19th · 1999</span><b>Ann Arbor</b><span class="where">USA</span></div>
+        <a class="edition" role="listitem" href="https://web.archive.org/web/20240811082600/http://www.lnf.infn.it/conference/pic98/" target="_blank" rel="noopener"><span class="mono">18th · 1998</span><b>Frascati</b><span class="where">Italy</span></a>
+        <div class="edition" role="listitem"><span class="mono">17th · 1997</span><b>Bristol</b><span class="where">UK</span></div>
+        <div class="edition" role="listitem"><span class="mono">16th · 1996</span><b>Mexico City</b><span class="where">Mexico</span></div>
+        <div class="edition" role="listitem"><span class="mono">15th · 1995</span><b>Kraków</b><span class="where">Poland</span></div>
+        <div class="edition" role="listitem"><span class="mono">14th · 1994</span><b>Tallahassee</b><span class="where">USA</span></div>
+        <div class="edition" role="listitem"><span class="mono">13th · 1993</span><b>Heidelberg</b><span class="where">Germany</span></div>
+        <div class="edition" role="listitem"><span class="mono">12th · 1992</span><b>Boulder</b><span class="where">USA</span></div>
+        <div class="edition" role="listitem"><span class="mono">11th · 1991</span><b>Colmar</b><span class="where">France</span></div>
+        <div class="edition" role="listitem"><span class="mono">10th · 1990</span><b>Durham</b><span class="where">USA</span></div>
+        <div class="edition" role="listitem"><span class="mono">9th · 1989</span><b>Jerusalem</b><span class="where">Israel</span></div>
+        <div class="edition" role="listitem"><span class="mono">8th · 1988</span><b>Capri</b><span class="where">Italy</span></div>
+        <div class="edition" role="listitem"><span class="mono">7th · 1987</span><b>Tsukuba</b><span class="where">Japan</span></div>
+        <div class="edition" role="listitem"><span class="mono">6th · 1986</span><b>Chicago</b><span class="where">USA</span></div>
+        <div class="edition" role="listitem"><span class="mono">5th · 1985</span><b>Autun</b><span class="where">France</span></div>
+        <div class="edition" role="listitem"><span class="mono">4th · 1984</span><b>Santa Cruz</b><span class="where">USA</span></div>
+        <div class="edition" role="listitem"><span class="mono">3rd · 1983</span><b>Como</b><span class="where">Italy</span></div>
+        <div class="edition" role="listitem"><span class="mono">2nd · 1982</span><b>Stockholm</b><span class="where">Sweden</span></div>
+        <div class="edition" role="listitem"><span class="mono">1st · 1981</span><b>Blacksburg</b><span class="where">USA</span></div>
       </div>
     </div>
   </section>
@@ -662,7 +709,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
         <h2>How to contribute</h2>
         <div class="prose" style="margin-top:18px">
           <p>The program is made up of invited plenary talks, contributed talks and posters. Contributed talks run in the parallel sessions on Wednesday morning.</p>
-          <p>Posters are on display throughout the conference. Selected posters are presented orally in a plenary session, and those contributions are included in the proceedings.</p>
+          <p>Posters are on display throughout the conference.</p>
         </div>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#abstracts" aria-disabled="true" onclick="return false">Submission portal · opening soon</a>
@@ -795,13 +842,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
   <header class="page-head"><div class="wrap">
     <p class="hero-eyebrow">PIC 2027</p>
     <h1>Contact</h1>
-    <p>Contact details will be published here soon.</p>
+    <p>Email the organising committee at <a href="mailto:pic2027@monash.edu">pic2027@monash.edu</a>.</p>
   </div></header>
   <section class="section">
     <div class="wrap">
       <div class="contact-grid">
-        <div><h3>Conference secretariat</h3><p>Registration, invoices, visa invitation letters and general enquiries.</p><span class="tbc">Email TBC</span></div>
-        <div><h3>Scientific program</h3><p>Abstracts, talks, posters and proceedings.</p><span class="tbc">Email TBC</span></div>
+        <div><h3>Conference secretariat</h3><p>Registration, invoices, visa invitation letters and general enquiries.</p><a class="mono" href="mailto:pic2027@monash.edu">pic2027@monash.edu</a></div>
+        <div><h3>Scientific program</h3><p>Abstracts, talks, posters and proceedings.</p><a class="mono" href="mailto:pic2027@monash.edu">pic2027@monash.edu</a></div>
         <div><h3>Venue</h3><p class="mono" style="color:var(--ink)">Monash College<br>750 Collins Street<br>Docklands VIC 3008</p></div>
       </div>
     </div>
@@ -812,6 +859,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
   <div class="wrap">
     <div class="foot">
       <div>
+        <img class="foot-logo" src="pic2027-logo.svg" width="112" height="112" alt="PIC 2027 logo: Melbourne, Australia, 20–23 September 2027">
         <a class="brand" href="#home" aria-label="PIC 2027 home">
           <svg aria-hidden="true"><use href="#logo"/></svg>
           <span class="brand-text"><b>PIC 2027</b><span>46th Physics in Collisions</span></span>
