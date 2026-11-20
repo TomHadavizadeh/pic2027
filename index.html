@@ -117,7 +117,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 .page-head .wrap { position: relative; padding-block: clamp(48px, 7vw, 84px); }
 .page-head h1 { font-stretch: 120%; font-weight: 800; font-size: clamp(34px, 5.5vw, 60px); margin-top: 12px; }
 .page-head p { margin-top: 14px; color: var(--night-muted); max-width: 62ch; }
-.page-head a { color: var(--glow); }
+.page-head a:not(.btn) { color: var(--glow); }
 
 /* ── Sections ── */
 .section { padding-block: clamp(56px, 8vw, 96px); }
@@ -236,6 +236,9 @@ a.edition:hover::before { border-color: var(--accent); }
 .policy { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 40px; margin-top: 28px; }
 .policy h3 { font-stretch: 108%; font-size: 18px; margin-bottom: 8px; }
 .policy p { color: var(--muted); font-size: 15px; }
+.conditions { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); max-width: 72ch; display: grid; gap: 12px; }
+.conditions h3 { font-stretch: 108%; font-size: 18px; }
+.conditions p, .conditions li { color: var(--muted); font-size: 15px; }
 
 /* Venue */
 .addr { font-family: var(--mono); font-size: 15px; line-height: 1.7; margin-top: 18px; }
@@ -316,7 +319,6 @@ a.edition:hover::before { border-color: var(--accent); }
       <a href="#abstracts">Abstracts</a>
       <a href="#venue">Venue</a>
       <a href="#accommodation">Accommodation</a>
-      <a href="#excursions">Excursions</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu-panel">
@@ -333,7 +335,6 @@ a.edition:hover::before { border-color: var(--accent); }
         <li><a href="#abstracts">Abstracts</a></li>
         <li><a href="#venue">Venue</a></li>
         <li><a href="#accommodation">Accommodation</a></li>
-        <li><a href="#excursions">Excursions</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -449,28 +450,6 @@ a.edition:hover::before { border-color: var(--accent); }
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="wrap">
-      <p class="kicker">Speakers</p>
-      <h2>Invited plenary speakers</h2>
-      <p class="lede">Invited speakers will be announced here as they confirm. Each plenary session reviews one area of the field.</p>
-      <div class="slots">
-        <div class="slot"><b>Higgs physics</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Electroweak physics</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>QCD</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Heavy-ion physics</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Flavour &amp; spectroscopy</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Neutrino physics</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Beyond the Standard Model</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Dark matter searches</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Astroparticle physics</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Gravitational waves</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Cosmology</b><span>Speaker TBA</span></div>
-        <div class="slot"><b>Experimental summary</b><span>Speaker TBA</span></div>
-      </div>
-    </div>
-  </section>
-
   <section class="section">
     <div class="wrap split">
       <div>
@@ -499,7 +478,6 @@ a.edition:hover::before { border-color: var(--accent); }
         <a class="card" href="#abstracts"><h3>Abstracts</h3><p>Guidelines for contributed talks and posters.</p></a>
         <a class="card" href="#venue"><h3>Venue</h3><p>Monash College, 750 Collins Street, Docklands, and how to get there.</p></a>
         <a class="card" href="#accommodation"><h3>Accommodation</h3><p>Where to stay in Docklands, South Wharf and the city centre.</p></a>
-        <a class="card" href="#excursions"><h3>Excursions</h3><p>Half-day excursion options on Wednesday afternoon, and longer trips after the conference.</p></a>
         <a class="card" href="#contact"><h3>Contact</h3><p>Conference secretariat and organising committee.</p></a>
       </div>
     </div>
@@ -614,7 +592,7 @@ a.edition:hover::before { border-color: var(--accent); }
         <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
         <div class="slot-row"><span class="time">11:00</span><div class="what"><i class="tag parallel">Parallel</i><b>Parallel sessions II</b></div></div>
         <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
-        <div class="slot-row"><span class="time">13:30</span><div class="what"><i class="tag social">Social</i><b>Excursions</b><span>Optional, booked separately. <a href="#excursions">See the options</a></span></div></div>
+        <div class="slot-row"><span class="time">13:30</span><div class="what"><i class="tag social">Social</i><b>Excursions</b><span>Optional, booked separately. Details to be confirmed.</span></div></div>
         <div class="slot-row"><span class="time">19:00</span><div class="what"><i class="tag social">Social</i><b>Conference dinner</b><span>Melbourne CBD, venue to be announced. Included in registration.</span></div></div>
       </div>
 
@@ -690,6 +668,17 @@ a.edition:hover::before { border-color: var(--accent); }
         <div><h3>Payment methods</h3><p>Accepted payment methods will be listed when registration opens. <span class="tbc">TBC</span></p></div>
         <div><h3>Cancellation and refunds</h3><p>The refund schedule will be published when registration opens. <span class="tbc">TBC</span></p></div>
         <div><h3>Insurance</h3><p>Registration does not include travel or medical insurance. Delegates should arrange their own cover.</p></div>
+      </div>
+      <div class="conditions" id="conditions">
+        <h3>Conditions of registration</h3>
+        <p>By registering for PIC 2027, delegates accept the following conditions.</p>
+        <ul class="plain-list">
+          <li>The organisers reserve the right to change the dates, venue, program, speakers or social events, or to cancel the conference, if circumstances make this necessary.</li>
+          <li>If changes are made, registered delegates will be informed by email as soon as possible.</li>
+          <li>Refunds are handled under the cancellation and refund policy above.</li>
+          <li>The organisers are not responsible for travel, accommodation or other costs that delegates incur as a result of any change or cancellation. Delegates are encouraged to take out travel insurance.</li>
+          <li>Program details on this website are provisional until the final program is published.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -803,40 +792,6 @@ a.edition:hover::before { border-color: var(--accent); }
   </section>
 </main>
 
-<!-- ════════════════ EXCURSIONS ════════════════ -->
-<main class="view" id="view-excursions" data-view="excursions" hidden>
-  <header class="page-head"><div class="wrap">
-    <p class="hero-eyebrow">PIC 2027</p>
-    <h1>Excursions</h1>
-    <p>Excursions are organised by the conference but are not included in the registration fee. Options and prices will be confirmed when registration opens.</p>
-  </div></header>
-  <section class="section">
-    <div class="wrap">
-      <p class="kicker">Wednesday 22 September · 13:30</p>
-      <h2>Half-day excursion options</h2>
-      <p class="lede">All options return to the city in time for the conference dinner.</p>
-      <div class="options">
-        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Yarra Valley wineries</h3><p>Cellar-door tastings and local produce in one of Victoria's best-known wine regions, north-east of Melbourne.</p><div class="meta"><span>Food &amp; wine</span><span>Return ~18:00</span></div></article>
-        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Healesville Sanctuary</h3><p>Australian wildlife in a bushland setting, including koalas, kangaroos, wombats and platypus.</p><div class="meta"><span>Wildlife</span><span>Return ~18:00</span></div></article>
-        <article class="option"><span class="badge">Coach · ~1 h each way</span><h3>Puffing Billy &amp; the Dandenong Ranges</h3><p>A heritage steam railway through the forested hills east of the city, with a stop in a hill village.</p><div class="meta"><span>Heritage &amp; nature</span><span>Return ~18:00</span></div></article>
-        <article class="option"><span class="badge">Coach · ~45 min each way</span><h3>Australian Synchrotron</h3><p>A 90-minute guided tour of Australia's national synchrotron light source in Clayton, next to Monash University's main campus.</p><div class="meta"><span>Science</span><span>Return ~17:00</span></div></article>
-        <article class="option"><span class="badge">On foot · from the venue</span><h3>Melbourne city walk</h3><p>A guided walk through the city's laneways, arcades and street art, ending along the Yarra close to the dinner venue.</p><div class="meta"><span>City</span><span>Low cost</span></div></article>
-      </div>
-    </div>
-  </section>
-  <section class="section alt">
-    <div class="wrap">
-      <p class="kicker">Friday 24 September onwards</p>
-      <h2>After the conference</h2>
-      <p class="lede">Full-day trips for delegates who are staying on. These are too long for Wednesday afternoon.</p>
-      <div class="options">
-        <article class="option"><span class="badge">Full day</span><h3>Great Ocean Road &amp; Twelve Apostles</h3><p>A coastal drive south-west of Melbourne to the limestone stacks of Port Campbell National Park.</p></article>
-        <article class="option"><span class="badge">Afternoon to late evening</span><h3>Phillip Island Penguin Parade</h3><p>Watch little penguins come ashore at sunset on Phillip Island, about two hours south-east of the city.</p></article>
-      </div>
-    </div>
-  </section>
-</main>
-
 <!-- ════════════════ CONTACT ════════════════ -->
 <main class="view" id="view-contact" data-view="contact" hidden>
   <header class="page-head"><div class="wrap">
@@ -872,7 +827,7 @@ a.edition:hover::before { border-color: var(--accent); }
       </div>
       <div>
         <h4>Visiting</h4>
-        <ul><li><a href="#venue">Venue</a></li><li><a href="#accommodation">Accommodation</a></li><li><a href="#excursions">Excursions</a></li><li><a href="#contact">Contact</a></li></ul>
+        <ul><li><a href="#venue">Venue</a></li><li><a href="#accommodation">Accommodation</a></li><li><a href="#contact">Contact</a></li></ul>
       </div>
     </div>
     <p class="foot-base">© 2027 PIC 2027 · XLVI International Symposium on Physics in Collisions · Melbourne, Australia</p>
