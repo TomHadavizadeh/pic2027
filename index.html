@@ -247,6 +247,11 @@ a.edition:hover::before { border-color: var(--accent); }
 .travel p { color: var(--muted); font-size: 15px; }
 .mini-map { background: var(--night-2); border-radius: 8px; padding: 28px; display: grid; place-items: center; }
 .mini-map svg { width: 100%; max-width: 420px; height: auto; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+.gallery figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.gallery img { display: block; width: 100%; height: auto; aspect-ratio: 690 / 435; object-fit: cover; border-radius: 6px; background: var(--chip); }
+.gallery figcaption { font-size: 14px; color: var(--muted); }
+.credit { margin-top: 14px; font-size: 13px; color: var(--muted); }
 
 /* Accommodation & excursions */
 .options { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
@@ -352,6 +357,7 @@ a.edition:hover::before { border-color: var(--accent); }
       <div class="hero-actions">
         <a class="btn btn-primary" href="#registration">Registration</a>
         <a class="btn btn-ghost" href="#program">View program</a>
+        <a class="btn btn-ghost" href="https://indico.cern.ch/event/1752999/" target="_blank" rel="noopener">Indico event ↗</a>
       </div>
       <p class="hero-note">
         <svg aria-hidden="true"><use href="#logo"/></svg>
@@ -617,6 +623,7 @@ a.edition:hover::before { border-color: var(--accent); }
     <p class="hero-eyebrow">PIC 2027</p>
     <h1>Registration</h1>
     <p>Registration will open soon. Fees and deadlines will be published here.</p>
+    <p>Registrations will be processed through Indico, on the <a href="https://indico.cern.ch/event/1752999/" target="_blank" rel="noopener">PIC 2027 Indico event page</a>.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#registration" aria-disabled="true" onclick="return false">Register now · opening soon</a>
       <a class="btn btn-ghost" href="#contact">Request a visa invitation letter</a>
@@ -698,10 +705,11 @@ a.edition:hover::before { border-color: var(--accent); }
         <h2>How to contribute</h2>
         <div class="prose" style="margin-top:18px">
           <p>The program is made up of invited plenary talks, contributed talks and posters. Contributed talks run in the parallel sessions on Wednesday morning.</p>
+          <p>Abstracts are submitted through the <a href="https://indico.cern.ch/event/1752999/abstracts/" target="_blank" rel="noopener">call for abstracts on Indico</a>.</p>
           <p>Posters are on display throughout the conference.</p>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-solid" href="#abstracts" aria-disabled="true" onclick="return false">Submission portal · opening soon</a>
+          <a class="btn btn-solid" href="https://indico.cern.ch/event/1752999/abstracts/" target="_blank" rel="noopener">Call for abstracts on Indico ↗</a>
         </div>
       </div>
       <div>
@@ -757,6 +765,20 @@ a.edition:hover::before { border-color: var(--accent); }
     </div>
   </section>
   <section class="section alt">
+    <div class="wrap">
+      <p class="kicker">The campus</p>
+      <h2>Inside 750 Collins Street</h2>
+      <p class="lede">The campus has modern learning spaces, a library and learning centre, a student hub and winter gardens. Collins Square, across the road, has cafés, a food court and shops.</p>
+      <div class="gallery">
+        <figure><img src="images/venue/Amphitheatre-feature-box.jpg" alt="Open study area with timber ceiling panels at 750 Collins Street" width="690" height="435" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Open learning spaces</figcaption></figure>
+        <figure><img src="images/venue/Classroom.jpg" alt="Classroom with group tables and wall screens at 750 Collins Street" width="690" height="435" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Teaching rooms</figcaption></figure>
+        <figure><img src="images/venue/Architectural-design.jpg" alt="Atrium with timber ceiling and red flooring at 750 Collins Street" width="690" height="435" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>The atrium</figcaption></figure>
+        <figure><img src="images/venue/Feature-Box-Melbourne-Train.jpg" alt="Melbourne city buildings" width="690" height="435" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Melbourne's city centre on the doorstep</figcaption></figure>
+      </div>
+      <p class="credit">Photos: Monash College.</p>
+    </div>
+  </section>
+  <section class="section">
     <div class="wrap">
       <p class="kicker">Travel</p>
       <h2>Arriving in Melbourne</h2>
