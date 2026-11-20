@@ -99,7 +99,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 /* ── Hero ── */
 .hero { position: relative; background: var(--night) url("collision.jpg") 62% 50% / cover no-repeat; color: var(--night-ink); overflow: hidden; }
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 11, 23, 0.92) 0%, rgba(5, 11, 23, 0.7) 42%, rgba(5, 11, 23, 0.05) 75%); }
-.hero .wrap { position: relative; padding-block: clamp(72px, 12vw, 148px) clamp(56px, 8vw, 104px); }
+.hero .wrap { position: relative; padding-block: clamp(32px, 5vw, 64px) clamp(56px, 8vw, 104px); }
 .hero-logo { display: block; width: clamp(76px, 8vw, 104px); height: auto; margin-bottom: 22px; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
 .hero-eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
@@ -373,7 +373,7 @@ a.edition:hover::before { border-color: var(--accent); }
         <h2>About PIC 2027</h2>
         <div class="prose" style="margin-top:18px">
           <p>Physics in Collisions updates the key topics in particle physics where new results have been published in the past year, or are expected before the symposium. Talks are designed to start informal discussion of new experimental results and what they imply.</p>
-          <p>The program covers experimental particle physics through to astroparticle physics, with invited plenary talks, contributed talks and posters. Selected posters are presented orally in a plenary session and included in the proceedings.</p>
+          <p>The program covers experimental particle physics through to astroparticle physics, with invited plenary talks and contributed talks.</p>
           <p>The 46th symposium is hosted in Melbourne at Monash College's Docklands campus, a short walk from Southern Cross Station.</p>
         </div>
       </div>
@@ -481,7 +481,7 @@ a.edition:hover::before { border-color: var(--accent); }
       <div class="cards">
         <a class="card" href="#program"><h3>Program</h3><p>Three days of plenary talks, a morning of parallel sessions, and the social program.</p></a>
         <a class="card" href="#registration"><h3>Registration</h3><p>Early-bird and normal fees for standard and student delegates.</p></a>
-        <a class="card" href="#abstracts"><h3>Abstracts</h3><p>Guidelines for contributed talks and posters.</p></a>
+        <a class="card" href="#abstracts"><h3>Abstracts</h3><p>Guidelines for submitting contributed talks.</p></a>
         <a class="card" href="#venue"><h3>Venue</h3><p>Monash College, 750 Collins Street, Docklands, and how to get there.</p></a>
         <a class="card" href="#accommodation"><h3>Accommodation</h3><p>Where to stay in Docklands, South Wharf and the city centre.</p></a>
         <a class="card" href="#contact"><h3>Contact</h3><p>Conference secretariat and organising committee.</p></a>
@@ -550,7 +550,7 @@ a.edition:hover::before { border-color: var(--accent); }
   <header class="page-head"><div class="wrap">
     <p class="hero-eyebrow">PIC 2027</p>
     <h1>Program</h1>
-    <p>Provisional outline, subject to change. Session themes follow the scientific topics; speakers will be added as they confirm.</p>
+    <p>Provisional outline, subject to change. Session details and speakers will be added once confirmed.</p>
   </div></header>
   <section class="section">
     <div class="wrap">
@@ -571,25 +571,25 @@ a.edition:hover::before { border-color: var(--accent); }
         <div class="day-title"><h3>Monday</h3><span class="mono">20 September 2027</span></div>
         <div class="slot-row brk"><span class="time">08:15</span><div class="what"><b>Registration and coffee</b></div></div>
         <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Opening</b><span>Welcome from the organisers</span></div></div>
-        <div class="slot-row"><span class="time">09:20</span><div class="what"><i class="tag plenary">Plenary</i><b>Higgs physics</b></div></div>
+        <div class="slot-row"><span class="time">09:20</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
-        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Electroweak physics</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
-        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>QCD</b></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea</b></div></div>
-        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Heavy-ion physics</b></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row"><span class="time">18:00</span><div class="what"><i class="tag social">Social</i><b>Welcome drinks</b><span>At the venue, 750 Collins Street</span></div></div>
       </div>
 
       <div class="day" data-day-panel="tue" hidden>
         <div class="day-title"><h3>Tuesday</h3><span class="mono">21 September 2027</span></div>
-        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Flavour physics &amp; spectroscopy</b></div></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
-        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Neutrino physics</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
-        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Beyond the Standard Model</b></div></div>
-        <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea and posters</b><span>Posters are on display throughout the conference</span></div></div>
-        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Dark matter searches</b><span>Followed by selected poster presentations</span></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
+        <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea</b></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
       </div>
 
       <div class="day" data-day-panel="wed" hidden>
@@ -604,13 +604,13 @@ a.edition:hover::before { border-color: var(--accent); }
 
       <div class="day" data-day-panel="thu" hidden>
         <div class="day-title"><h3>Thursday</h3><span class="mono">23 September 2027</span></div>
-        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Astroparticle physics</b></div></div>
+        <div class="slot-row"><span class="time">09:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">10:40</span><div class="what"><b>Morning tea</b></div></div>
-        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Gravitational waves</b></div></div>
+        <div class="slot-row"><span class="time">11:10</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">12:30</span><div class="what"><b>Lunch</b></div></div>
-        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Cosmology</b></div></div>
+        <div class="slot-row"><span class="time">13:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row brk"><span class="time">15:15</span><div class="what"><b>Afternoon tea</b></div></div>
-        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Experimental and theoretical summaries</b></div></div>
+        <div class="slot-row"><span class="time">15:45</span><div class="what"><i class="tag plenary">Plenary</i><b>Plenary session</b></div></div>
         <div class="slot-row"><span class="time">17:00</span><div class="what"><i class="tag plenary">Plenary</i><b>Closing</b><span>Announcement of PIC 2028</span></div></div>
       </div>
     </div>
@@ -696,7 +696,7 @@ a.edition:hover::before { border-color: var(--accent); }
   <header class="page-head"><div class="wrap">
     <p class="hero-eyebrow">PIC 2027</p>
     <h1>Abstract submission</h1>
-    <p>Abstracts for contributed talks and posters of interest to the particle-physics community are welcome.</p>
+    <p>Abstracts for contributed talks of interest to the particle-physics community are welcome.</p>
   </div></header>
   <section class="section">
     <div class="wrap split">
@@ -704,9 +704,8 @@ a.edition:hover::before { border-color: var(--accent); }
         <p class="kicker">Formats</p>
         <h2>How to contribute</h2>
         <div class="prose" style="margin-top:18px">
-          <p>The program is made up of invited plenary talks, contributed talks and posters. Contributed talks run in the parallel sessions on Wednesday morning.</p>
+          <p>The program is made up of invited plenary talks and contributed talks. Contributed talks run in the parallel sessions on Wednesday morning.</p>
           <p>Abstracts are submitted through the <a href="https://indico.cern.ch/event/1752999/abstracts/" target="_blank" rel="noopener">call for abstracts on Indico</a>.</p>
-          <p>Posters are on display throughout the conference.</p>
         </div>
         <div class="hero-actions">
           <a class="btn btn-solid" href="https://indico.cern.ch/event/1752999/abstracts/" target="_blank" rel="noopener">Call for abstracts on Indico ↗</a>
@@ -722,7 +721,6 @@ a.edition:hover::before { border-color: var(--accent); }
         </div>
         <p class="kicker" style="margin-top:36px">When you submit</p>
         <ul class="plain-list" style="margin-top:14px">
-          <li>Choose a preference: contributed talk, poster, or either</li>
           <li>Select the closest scientific topic</li>
           <li>Give a title, author list and affiliations, and the presenting author</li>
           <li>Keep the abstract to a short paragraph</li>
@@ -825,7 +823,7 @@ a.edition:hover::before { border-color: var(--accent); }
     <div class="wrap">
       <div class="contact-grid">
         <div><h3>Conference secretariat</h3><p>Registration, invoices, visa invitation letters and general enquiries.</p><a class="mono" href="mailto:pic2027@monash.edu">pic2027@monash.edu</a></div>
-        <div><h3>Scientific program</h3><p>Abstracts, talks, posters and proceedings.</p><a class="mono" href="mailto:pic2027@monash.edu">pic2027@monash.edu</a></div>
+        <div><h3>Scientific program</h3><p>Abstracts, talks and proceedings.</p><a class="mono" href="mailto:pic2027@monash.edu">pic2027@monash.edu</a></div>
         <div><h3>Venue</h3><p class="mono" style="color:var(--ink)">Monash College<br>750 Collins Street<br>Docklands VIC 3008</p></div>
       </div>
     </div>
