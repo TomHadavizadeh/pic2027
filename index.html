@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 /* Layout: dark detector-hall bands (header, hero, footer) frame a cool paper body; one routed view per page, QLIME-style section stack. */
 :root {
@@ -265,8 +266,17 @@ a.edition:hover::before { border-color: var(--accent); }
 .travel { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px 36px; margin-top: 32px; }
 .travel h3 { font-stretch: 108%; font-size: 18px; margin-bottom: 8px; }
 .travel p { color: var(--muted); font-size: 15px; }
-.mini-map { background: var(--night-2); border-radius: 8px; padding: 28px; display: grid; place-items: center; }
-.mini-map svg { width: 100%; max-width: 420px; height: auto; }
+.venue-map { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--night-2); }
+.cbd-map { height: clamp(320px, 42vw, 440px); background: var(--night-2); font-family: var(--body); }
+.aus-inset { position: absolute; top: 12px; right: 12px; z-index: 450; width: 96px; height: auto; padding: 8px; background: rgba(5, 11, 23, 0.85); border: 1px solid var(--night-line); border-radius: 6px; pointer-events: none; }
+.leaflet-tooltip.venue-label { background: var(--night); color: var(--night-ink); border: 1px solid var(--glow); border-radius: 4px; box-shadow: none; font-family: var(--mono); font-size: 12px; padding: 4px 8px; }
+.leaflet-tooltip-top.venue-label::before { border-top-color: var(--glow); }
+.leaflet-tooltip.place-label { background: rgba(5, 11, 23, 0.85); color: var(--night-muted); border: 0; box-shadow: none; font-family: var(--mono); font-size: 11px; padding: 2px 6px; }
+.leaflet-tooltip.place-label::before { display: none; }
+/* Standard OpenStreetMap tiles, shifted to a dark palette to match the site */
+.cbd-map .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.85) saturate(0.5); }
+.cbd-map .leaflet-control-attribution { background: rgba(5, 11, 23, 0.75); color: var(--night-muted); }
+.cbd-map .leaflet-control-attribution a { color: var(--glow); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
 .gallery figure { margin: 0; display: grid; gap: 8px; align-content: start; }
 .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 690 / 435; object-fit: cover; border-radius: 6px; background: var(--chip); }
@@ -821,12 +831,11 @@ a.edition:hover::before { border-color: var(--accent); }
           <div class="date-row"><span>Trams</span><span class="mono">Routes 11 &amp; 48</span></div>
         </div>
       </div>
-      <div class="mini-map">
-        <svg viewBox="0 0 500 430" role="img" aria-label="Outline of Australia with Melbourne marked">
-          <use href="#aus" stroke="#a9c6e4" stroke-width="2.2"/>
-          <circle cx="392" cy="346" r="11" fill="none" stroke="#66ccff" stroke-width="1.2"/>
-          <circle cx="392" cy="346" r="4.5" fill="#ffffff"/>
-          <text x="372" y="330" text-anchor="end" fill="#e7eef7" font-family="IBM Plex Mono, monospace" font-size="15">Melbourne</text>
+      <div class="venue-map">
+        <div id="cbd-map" class="cbd-map" role="region" aria-label="Map of Melbourne's city centre with the venue at 750 Collins Street marked"></div>
+        <svg class="aus-inset" viewBox="0 0 500 430" role="img" aria-label="Melbourne's location in Australia">
+          <use href="#aus" stroke="#a9c6e4" stroke-width="10"/>
+          <circle cx="392" cy="346" r="24" fill="#66ccff"/>
         </svg>
       </div>
     </div>
@@ -946,6 +955,7 @@ a.edition:hover::before { border-color: var(--accent); }
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function () {
   var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
@@ -959,6 +969,24 @@ a.edition:hover::before { border-color: var(--accent); }
   }
   menuBtn.addEventListener('click', function () { setMenu(panel.hidden); });
 
+  // Melbourne CBD map on the Venue page (built the first time the page is shown)
+  var venueMap = null;
+  function initVenueMap() {
+    if (venueMap) { venueMap.invalidateSize(); return; }
+    var el = document.getElementById('cbd-map');
+    if (!el || !window.L) return;
+    var venue = [-37.8203, 144.9495];
+    venueMap = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 }).setView([-37.8163, 144.9585], 14.5);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(venueMap);
+    L.circleMarker([-37.8183, 144.9525], { radius: 5, color: '#93a7c2', weight: 2, fillColor: '#0b1730', fillOpacity: 1 })
+      .addTo(venueMap).bindTooltip('Southern Cross Station', { permanent: true, direction: 'right', offset: [8, 0], className: 'place-label' });
+    L.circleMarker(venue, { radius: 9, color: '#66ccff', weight: 3, fillColor: '#ffffff', fillOpacity: 1 })
+      .addTo(venueMap).bindTooltip('PIC 2027 venue · 750 Collins Street', { permanent: true, direction: 'top', offset: [0, -10], className: 'venue-label' });
+  }
+
   function route() {
     var name = (location.hash || '').replace('#', '');
     var target = null;
@@ -969,6 +997,7 @@ a.edition:hover::before { border-color: var(--accent); }
       else name = 'home';
     }
     views.forEach(function (v) { v.hidden = v.dataset.view !== name; });
+    if (name === 'venue') requestAnimationFrame(initVenueMap);
     document.querySelectorAll('.nav a, .menu-panel a').forEach(function (a) {
       if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
